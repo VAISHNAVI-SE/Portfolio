@@ -22,6 +22,18 @@
             --text-secondary: #b0b0b0;
             --accent-color: #00ff88;
         }
+        
+        body.light-theme {
+            --primary-gradient: linear-gradient(135deg, #b2fefa 0%, #e6e6fa 100%);
+            --secondary-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --ai-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --dark-gradient: linear-gradient(135deg, #f7fafc 0%, #e3f0ff 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(60, 180, 200, 0.10);
+            --text-primary: #1a2233;
+            --text-secondary: #4a6073;
+            --accent-color: #1fa2ff;
+        }
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -76,12 +88,26 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 24px 60px;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
             transition: all 0.3s ease;
+        }
+        body.light-theme nav {
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        body.light-theme .nav-links a {
+            color: var(--text-primary);
+        }
+        body.light-theme .logo {
+            -webkit-text-fill-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        body.light-theme #theme-toggle {
+            color: var(--accent-color);
         }
 
         nav.scrolled {
@@ -98,12 +124,29 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             font-size: 24px;
             font-weight: 700;
             background: var(--ai-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            overflow: hidden;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .nav-links {
@@ -164,35 +207,39 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(4rem, 10vw, 7rem);
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 28px;
             background: linear-gradient(45deg, #ffffff, #00c9ff, #92fe9d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
+            line-height: 1.08;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
             color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-weight: 300;
+            margin-bottom: 36px;
+            font-weight: 400;
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.35rem;
             color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            margin-bottom: 48px;
+            line-height: 1.7;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+        .cta-buttons .btn {
+            font-size: 1.25rem;
+            padding: 18px 36px;
         }
 
         .btn {
@@ -249,10 +296,10 @@
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 800;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             background: var(--ai-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -262,7 +309,7 @@
         /* About Section */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 400px;
             gap: 60px;
             align-items: center;
         }
@@ -282,9 +329,10 @@
         .education-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 28px;
+            padding: 56px 48px;
+            margin-bottom: 40px;
+            font-size: 1.25rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -296,15 +344,37 @@
         }
 
         .education-degree {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .education-details {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .skills-grid {
@@ -316,9 +386,10 @@
         .skill-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 28px;
+            padding: 48px 32px;
             text-align: center;
+            font-size: 1.15rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -347,9 +418,10 @@
         .experience-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            border-radius: 32px;
+            padding: 64px 52px;
+            margin-bottom: 48px;
+            font-size: 1.18rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -368,10 +440,10 @@
         }
 
         .experience-title {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .experience-company {
@@ -400,8 +472,9 @@
         .project-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 36px;
             overflow: hidden;
+            font-size: 1.25rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
@@ -457,20 +530,21 @@
         }
 
         .project-content {
-            padding: 25px;
+            padding: 56px 40px;
         }
 
         .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
             color: var(--text-primary);
         }
 
         .project-description {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 1.18rem;
         }
 
         .project-tech {
@@ -483,9 +557,9 @@
         .tech-tag {
             background: rgba(0, 255, 136, 0.1);
             color: var(--accent-color);
-            padding: 5px 12px;
+            padding: 7px 16px;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 1rem;
             border: 1px solid rgba(0, 255, 136, 0.2);
         }
 
@@ -515,15 +589,26 @@
         /* Certifications Section */
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .certification-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 28px;
+            padding: 56px 44px;
+            font-size: 1.13rem;
+            width: 100%;
+            max-width: 400px;
+            /* Removed margin-left/right: auto to avoid extra space */
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -534,10 +619,10 @@
         }
 
         .certification-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .certification-date {
@@ -566,8 +651,9 @@
         .contact-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 28px;
+            padding: 56px 40px;
+            font-size: 1.13rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -583,10 +669,10 @@
         }
 
         .contact-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .contact-detail {
@@ -630,6 +716,11 @@
                 gap: 40px;
             }
 
+            .profile-image {
+                width: 280px;
+                height: 280px;
+            }
+
             .experience-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -646,6 +737,15 @@
 
             .contact-info {
                 grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo-image {
+                width: 3px;
+                height: 3px;
             }
         }
 
@@ -712,16 +812,24 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">VAISHNAVI</div>
+            <div class="logo">
+                <div class="logo-image">
+                    <img src="V Logo.jpg">
+                </div>
+                VAISHNAVI
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#technical skills">Technical Skills</a></li>
+                <li><a href="#technicalskills">Technical Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" aria-label="Toggle theme" style="margin-left: 30px; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--accent-color);">
+                🌙
+            </button>
         </div>
     </nav>
 
@@ -758,26 +866,32 @@
                     computer vision, and scalable web applications. Actively seeking opportunities to apply my skills, 
                     drive innovation, and foster continuous growth.
                 </p>
-                
-                <div style="margin-top: 30px;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 15px;">Education</h4>
-                    <div class="education-item">
-                        <div class="education-degree">BE in Computer Science Engineering <b>Visveswaraiah technological university, Belgaum</b></div>
-                        <div class="education-details">CGPA: 8.2 • Expected June 2025</div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-degree">PUC - Alva's PU College</div>
-                        <div class="education-details">90% • March 2021 • Moodbidire, Dakshina Kannada</div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-degree">10th - Adarsha Vidyalaya RMSA School</div>
-                        <div class="education-details">85.44% • March 2019</div>
-                    </div>
-                </div>
             </div>
-        </section>
+            <div class="profile-image">
+                <img src="Vaishnavi_image.jpg" alt="Vaishnavi Profile">
+            </div>
+        </div>
+    </section>
 
-    <section id="technical skills" class="section fade-in">
+    <!-- Education Section -->
+    <section id="education" class="section fade-in">
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+            <div class="education-degree">BE in Computer Science Engineering <b>Visveswaraya technological university, Belgaum</b></div>
+            <div class="education-details">CGPA: 8.2 • Expected June 2025</div>
+        </div>
+        <div class="education-item">
+            <div class="education-degree">PUC - Alva's PU College</div>
+            <div class="education-details">90% • March 2021 • Moodbidire, Dakshina Kannada</div>
+        </div>
+        <div class="education-item">
+            <div class="education-degree">SSLC - Sree Narayana Guru High School</div>
+            <div class="education-details">92.8% • June 2019 • Moodbidire, Dakshina Kannada</div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="technicalskills" class="section fade-in">
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-item">
@@ -825,11 +939,6 @@
                     <span class="skill-icon">📝</span>
                     <div>Jupyter</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-category">Version Control</div>
-                    <span class="skill-icon">🌿</span>
-                    <div>Git</div>
-                </div>
             </div>
         </div>
     </section>
@@ -852,7 +961,6 @@
             </div>
         </div>
     </section>
-
     <!-- Projects Section -->
     <section id="projects" class="section fade-in">
         <h2 class="section-title">Featured Projects</h2>
@@ -922,38 +1030,54 @@
             </div>
         </div>
     </section>
-
+    <div style="text-align:center; margin-top: 30px;">
+        <a href="https://github.com/VAISHNAVI-SE?tab=repositories" target="_blank" class="btn btn-primary" style="font-size:1.1rem; padding:18px 40px; border-radius:32px; margin-top:10px; display:inline-block;">View Other Projects</a>
+    </div>
     <!-- Certifications Section -->
-        <div style="margin-top: 80px;">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-item">
-                    <div class="certification-title">Internship Certificate for Skill Competency</div>
-                    <div class="certification-date">April 2025</div>
-                </div>
-                <div class="certification-item">
-                    <div class="certification-title">Internship Certificate for Life Skills (Jeevan Kaushal) 2.0</div>
-                    <div class="certification-date">December 2024</div>
-                </div>
-                <div class="certification-item">
-                    <div class="certification-title">Naukri Campus Young Turks Skill Contest</div>
-                    <div class="certification-date">October 2024</div>
-                </div>
-                <div class="certification-item">
-                    <div class="certification-title">Communication and soft skills, Overview of AI,NLP by TCS ion</div>
-                    <div class="certification-date">October 2023</div>
-                </div>
-            </div>
+<div style="margin-top: 80px;">
+    <h2 class="section-title">Certifications</h2>
+    <div class="certifications-grid">
+        <div class="certification-item">
+            <a href="IEEE certificate.png" target="_blank" style="color: inherit; text-decoration: underline;">
+                <div class="certification-title">Internship Certificate for Skill Competency</div>
+                <div class="certification-date">April 2025</div>
+            </a>
         </div>
-    </section>
+        
+        <div class="certification-item">
+            <div class="certification-title">
+                <a href="Infosys Spring.jpeg" target="_blank" style="color: inherit; text-decoration: underline;">
+                    Internship Certificate for cloud computing in Infosys Springboard</a>
+            </div>
+            <div class="certification-date">December 2024</div>
+        </div>
+        
+        <div class="certification-item">
+            <div class="certification-title">
+                <a href="Naukri Young turks.pdf" target="_blank" style="color: inherit; text-decoration: underline;">
+                    Participation in Naukri young turks
+                </a>
+            </div>
+            <div class="certification-date">October 2024</div>
+        </div>
+
+        <div class="certification-item">
+            <div class="certification-title">
+                <a href="Soft-skills-certificate.pdf" target="_blank" style="color: inherit; text-decoration: underline;">
+                    Internship Certificate for Soft skills
+                </a>
+            </div>
+            <div class="certification-date">October 2023</div>
+        </div>
+    </div>
+</div>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact fade-in">
-        <h2 class="section-title">Let's Connect</h2>
+        <h2 class="section-title">Get In Touch</h2>
         <div class="contact-content">
             <p class="hero-description">
-                Ready to collaborate on innovative AI/ML projects or discuss opportunities? 
-                I'm always excited to connect with fellow developers, researchers, and industry professionals.
+                Ready to collaborate on exciting AI/ML projects? Let's connect and build something amazing together!
             </p>
             <div class="contact-info">
                 <div class="contact-item">
@@ -971,7 +1095,7 @@
                     </div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">🐱</div>
+                    <div class="contact-icon">💻</div>
                     <div class="contact-title">GitHub</div>
                     <div class="contact-detail">
                         <a href="https://github.com/VAISHNAVI-SE" target="_blank">View GitHub Profile</a>
@@ -988,10 +1112,31 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Vaishnavi. Crafted with passion for AI/ML innovation.</p>
+        <p>&copy; 2025 Vaishnavi. All rights reserved. Built with passion for AI/ML innovation.</p>
     </footer>
 
     <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.textContent = '🌞';
+            } else {
+                document.body.classList.remove('light-theme');
+                themeToggle.textContent = '🌙';
+            }
+        }
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.body.classList.toggle('light-theme');
+            const theme = isLight ? 'light' : 'dark';
+            setTheme(theme);
+            localStorage.setItem('theme', theme);
+        });
+
         // Loading screen
         window.addEventListener('load', function() {
             setTimeout(() => {
@@ -999,13 +1144,29 @@
                 setTimeout(() => {
                     document.getElementById('loadingOverlay').style.display = 'none';
                 }, 500);
-            }, 1500);
+            }, 1000);
         });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
@@ -1044,25 +1205,21 @@
             observer.observe(el);
         });
 
-        // Animated background particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
+        // Initialize particles
         createParticles();
 
-        // Dynamic typing effect for hero subtitle
+        // Add some interactive hover effects
+        document.querySelectorAll('.skill-item, .project-card, .experience-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Typing effect for hero title
         function typeWriter(element, text, speed = 100) {
             let i = 0;
             element.innerHTML = '';
@@ -1076,78 +1233,13 @@
             type();
         }
 
-        // Start typing effect after page load
+        // Initialize typing effect after page load
         setTimeout(() => {
-            const subtitle = document.querySelector('.hero-subtitle');
-            const originalText = subtitle.textContent;
-            typeWriter(subtitle, originalText, 150);
-        }, 2000);
-
-        // Add glitch effect to title occasionally
-        setInterval(() => {
-            const title = document.querySelector('.hero h1');
-            title.style.animation = 'glitch 0.3s ease-in-out';
-            setTimeout(() => {
-                title.style.animation = '';
-            }, 300);
-        }, 15000);
-
-        // Interactive cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: radial-gradient(circle, rgba(0,201,255,0.8) 0%, transparent 70%);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    mix-blend-mode: difference;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                typeWriter(heroTitle, 'Vaishnavi', 150);
             }
-            
-            const cursorElement = document.querySelector('.cursor');
-            cursorElement.style.left = e.clientX - 10 + 'px';
-            cursorElement.style.top = e.clientY - 10 + 'px';
-        });
-
-        // Add hover effects to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) rotateX(5deg)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotateX(0)';
-            });
-        });
-
-        // Progress bar for page scroll
-        const progressBar = document.createElement('div');
-        progressBar.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #00c9ff, #92fe9d);
-            z-index: 9999;
-            transition: width 0.1s ease;
-        `;
-        document.body.appendChild(progressBar);
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progressBar.style.width = scrollPercent + '%';
-        });
+        }, 1500);
     </script>
 </body>
 </html>
